@@ -1,0 +1,196 @@
+# This application is developed for potential clients who are seeking legal services from the ALRM
+---
+include:
+ - finalquestions.yml
+ - finalemail.yml
+---
+objects:
+  - endpoint: DADict
+---
+mandatory: True
+code: |
+  ALRMdisplay_welcome_screen
+---
+code: |
+  ALRMdisplay_welcome_screen = True
+  force_ask('ALRMwelcome_screen')
+---
+#This is our welcome screen, which users will see first upon running our application
+event: ALRMwelcome_screen
+question: Welcome to the Aboriginal Legal Rights Movement
+subquestion: |
+  The ALRM helps Aboriginal people who have come into contact with the Police or the Courts. ALRM provide representation, prison advice and after-hours custody advice service. 
+  
+  
+  ALRM helps Aboriginal people who have come into contact with the Police or the Courts.   We provide representation, prison advice and after-hours custody advice service.
+  This application can be used to gather information and determine whether you are eligible for legal support through the ALRM. 
+  Please note that this application does not provide any legal advice. 
+  
+  Do you accept these terms?
+buttons: 
+  - Yes I accept: continue
+  - No I do not accept: exit 
+    url: https://www.alrm.org.au/
+---
+# This is the mandatory block that controls the logic for our application
+# It directs our user to the eligible and ineligible screens.
+mandatory: True
+code: |
+  if ALRM_ATSI == 'Yes_ATSI':
+    endpoint['eligible']
+  else:
+    endpoint['ineligible']
+---
+question: Do you identify as Aboriginal or Torres Strait Islander?
+subquestion: |
+  Please select one of the following options
+field: ALRM_ATSI
+choices:
+  - Yes: Yes_ATSI
+  - No: Not_ATSI
+---
+# Ineligible endpoint
+# This screen is displayed if the user selects no when asked if they identify as an Aboriginal or Torres Strait Islander
+event: endpoint['ineligible']
+question: You are not eligible
+subquestion: |
+  Unfortunately you are not eligible to receive our support.
+  
+  The Aborgional Legal Rights Movement can only support clients that identify as an Aborgional or Torress Strait Islander person.
+  However, we hope these legal services may be able to assit you:
+  
+   1. Legal Services Commission of SA (LSC) provides legal services for people who can't afford to pay for legal representation.
+    
+        Phone: 1300 366 424
+    
+   2. Community Justice Services provide legal advice, assistance and referral to community members who might not otherwise get the help  they need. Most centres provide services free of charge.
+    
+   3. Uniting Communities provides information, advice and     representation on social security matters, including Centrelink and   appeals in the Administrative Appeal Tribunal. This service is available to people on a government benefit, living in South Australia, and aged 15 and over.
+   
+       Phone: 8342 1800
+  
+  4. Women's Legal Service is a community-based legal centre that   provides free and confidential legal services to women in SA.
+   
+       Phone: 8221 5553 
+  
+buttons:
+  - Restart: restart
+  - Exit: exit
+    url: https://www.alrm.org.au/
+---
+# This is where we are going to display the answers the user has entered
+# Note: We still need to ask these questions.
+event: endpoint['eligible']
+question: The information you have provided us
+subquestion: |
+  Here are the answers you have provided
+  
+  Question|Answer
+  ---|---
+  Your name|${NRFname}
+  Other party's name|${NRFother}
+  Age|${NRFage}
+  Gender|${NRFgender}
+  Address|${NRFaddress}
+  Contact Number|${NRFphone}
+  Email|${NRFemail}
+  Legal Issue|${ALRMLegalissue.true_values()}
+  % if ALRMLegalissue ['Victims of Crime']:
+  Incident reported to police|${VOC_incident_report}
+  % endif
+  Date of offence|${VOC_date_of_offence}
+  Perpetrator|${VOC_perpetrator}
+  Offender's Date of Birth|${VOC_dateofbirth_offender}
+  Offender charged and convicted|${VOC_offence}
+  % if VOC_offence == 'VOC_Yes_CC':
+  Injuries sustained|${VOC_injuries}
+  Hospital attendance|${VOC_hospital}
+  General Practitioner|${VOC_GP}
+  % endif
+  % if VOC_GP == 'VOC_Yes_GP':
+  Name of General Practitioner|${VOC_GP_name}
+  % endif
+  Medical Practice|{VOC_Name_MP}
+  % if ALRMLegalissue['Employment']:
+  Place of work|${EMPworkplace}
+  % endif
+  Employment Type|${EMPworkplace}
+  Job Title|${EMPjobrole}
+  Job Role Description|${EMPjobroleinfo}
+  Union Membership|${EMPunion}
+  Union name|${EMPunionname}
+  Ongoing Issue|${EMPongoing}
+  Raised Issue with Anyone|${EMPraised}
+  Anything happen when raised|${EMPhappened}
+  Extra information|${EMPextrainfo}
+  % if ALRMLegalissue['Motor Vehicle Accident Claims']:
+  Date of offence|${MVA_date_of_offence}
+  % endif
+  Name of other Party|${MVA_party}
+  Registration of perpetrator|${MVA_registration}
+  Cause of Accident|${MVA_accident}
+  % if MVA_injury == 'MVA_Yes_Injury':
+  Injury Details|${MVA_detail_injury}
+  % endif
+  Other party's injuries|${MVA_injury_other}
+  Exchange of details|${MVA_details_other}
+  Medical help required|${MVA_medical_help}
+  Police contacted|${MVA_police}
+  % if MVA_police == 'MVA_Yes_police':
+  Date of Police Contact|${MVA_date_of_police_contact}
+  % endif
+  Insurance Claim|${MVA_Insurance_claim}
+  % if ALRMLegalissue['National Redress Scheme (sexual abuse clients)']:
+  Name of institution|${NRS_Name}
+  % endif
+  Placement Type|${NRS_placement_type}
+  Name of Institution|${NRS_institution_abuse}
+  Name of Perpetrator|${NRS_perpetrator}
+  Date of offence|${NRS_date_of_offence}
+  Age of abuse|${NRS_age}
+  Period of abuse|${NRS_abuse_period}
+  National Redress Scheme Prior Payments|${NRS_prior_payment}
+  % if NRS_prior_payment == 'NRS_prior_payment_received':
+  Details of Payment|${NRS_Payments}
+  % endif
+  % if ALRMLegalissue['Family Law']:
+  Name of your former partner|${FL_partner_name}
+  % endif
+  Former partner's Date of Birth|${FL_partner_date}
+  Children from the relationship|${FL_children}
+  % if FL_children == 'FL_Yes_Children':
+  Child name|${FL_child_name}
+  Child Date of Birth|${FL_child_date}
+  % endif
+  Date of commencement of relationship|${FL_date_relationship}
+  Date of separation|${FL_separation_date}
+  Reason for separation|${FL_separation_reason}
+  Intervention order|${FL_intervention_order}
+  % if ALRMLegalissue['Other']:
+  What is the issue|${FL_other_issue}
+  % endif
+  Welfare/Police involvement|${FL_involvement_police}
+  Family Court|${Other_FC}
+  % if Other_FC == 'FL_Yes_FC':
+  Date in Family Court|${Other_FC_date}
+  % endif
+  Family Dispute Resolution|${Other_FDS}
+  Previous lawyer|${Other_lawyer}
+  % if Other_lawyer == 'Other_Yes_lawyer':
+  Lawyer details|${Other_lawyer_title}
+  % endif
+  Thank you for taking the time to complete some questions about you and your issue. We will be in touch soon!
+  
+  If you do require any emergency assistance please call our 24 hour service on (08) 8113 3777. Or alternatively on our free call (SA only) on 1800 643 222. 
+  
+  % if email_sent_ok:
+  The e-mail was sent successfully.
+  % else:
+  There was a problem sending the e-mail.
+  % endif
+ 
+buttons:
+  - Restart: restart
+  - Exit: exit
+    url: https://www.alrm.org.au/
+---

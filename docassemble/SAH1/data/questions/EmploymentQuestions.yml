@@ -1,0 +1,96 @@
+---
+question: Employment
+subquestion: |
+  Where do you work?
+fields:
+  - no label: EMPworkplace
+    input type: target_variable
+---
+question: Employment
+subquestion: |
+  What type is your employment?
+fields:
+  - no label: EMPworktype
+    input type: radio
+    choices:
+     - Casual
+     - Part-Time
+     - Full-Time
+     - Unsure
+---
+question: Employment
+subquestion: |
+  What is your job title?
+fields:
+  - no label: EMPjobrole
+    datatype: target_variable
+---
+question: Employment
+subquestion: |
+  What do you do in your job role?
+fields:
+  - no label: EMPjobroleinfo
+    datatype: target_variable
+---
+question: Employment
+subquestion: |
+  Are you a member of your union?
+fields:
+  - no label: EMPunion
+    input type: radio
+    choices:
+     - Yes
+     - No
+     - Unsure
+---
+question: Employment
+subquestion: |
+  If so, what is the name of your union?
+fields:
+  - no label: EMPunionname
+    datatype: target_variable
+---
+question: Employment
+subquestion: |
+  Please explain your workplace issue.
+fields:
+  - no label: EMPworkissue
+    input type: area
+---
+question: Employment
+subquestion: |
+  Is this issue ongoing?
+fields:
+  - no label: EMPongoing
+    input type: radio
+    choices:
+     - Yes
+     - No
+---
+question: Employment
+subquestion: |
+  have you raised this issue with anyone?
+fields:
+  - no label: EMPraised
+    input type: radio
+    choices:
+     - Yes, a lawyer
+     - Yes, a manager
+     - Yes, the union
+     - Yes, human resources (HR)
+     - No
+---
+question: Employment
+subquestion: |
+  If yes, please explain if anything has happened
+fields:
+  - no label: EMPhappened
+    input type: area
+---
+question: Employment
+subquestion: |
+  Is there anything else you would like to mention?
+fields:
+  - no label: EMPextrainfo
+    input type: area
+---

@@ -1,0 +1,591 @@
+---
+question: Do you identify as Aboriginal or Torres Strait Islander?
+subquestion: |
+  Please select one of the following options
+field: ALRM_ATSI
+choices:
+  - Yes: Yes_ATSI
+  - No: Not_ATSI
+---
+question: What is your full legal name?
+subquestion: |
+  Please enter your legal name
+fields:
+  - no label: NRFname
+---
+question: Name of other party
+subquestion: |
+  Please enter the full name of other party
+fields:
+  - no label: NRFother
+---
+question: Gender
+subquestion: |
+  Please enter your gender
+fields:
+  - no label: NRFgender
+    input type: radio
+    choices:
+     - Male
+     - Female
+     - Other
+---
+question: Where do you live?
+subquestion: |
+  Please enter your residential address
+fields:
+  - no label: NRFaddress
+---
+question: How old are you?
+subquestion: |
+  Please enter your age
+fields:
+  - no label: NRFage
+    datatype: integer
+---
+question: Contact Number
+subquestion: |
+  Please enter your best contact number
+fields:
+  - Phone Number: NRFphone
+    datatype: integer
+--- 
+question: What is your email address?
+subquestion: |
+  Please enter your best email address
+fields: 
+  - Email Address: NRFemail
+    datatype: email
+---
+question: Legal Issue
+subquestion: |
+  You will then be asked questions regarding the legal issues selected below.
+fields:
+  - What is the nature of your legal issue(s)?: ALRMLegalissue
+    datatype: checkboxes
+    choices:
+     - Child Protection
+     - Family Law
+     - Workcover
+     - Discrimination
+     - Employment
+     - Police Complaint
+     - Victims of Crime
+     - Personal Injury
+     - Motor Vehicle Accident Claims
+     - National Redress Scheme (sexual abuse clients)
+     - Other 
+---
+# This code block asks potential clients Victim of Crime questions 
+# 'VOC' is an abbreviation for Victim of Crime
+# a 'radio' allows a user to select one choice only
+question: Victim of Crime
+subquestion: |
+  Was the incident reported to the police?
+  
+fields:
+  - no label: VOC_incident_report
+    datatype: radio
+    choices:
+    - Yes, the incident was reported to the police: VOC_Reported
+    - No, the incident was not reported to the police: VOC_Not_reported
+---
+# A 'date' datatype allows a user to input the date
+question: Victim of Crime
+subquestion: |
+  What was the date of the offence?
+fields:
+  - no label: VOC_date_of_offence
+    datatype: date
+---
+# a 'fields' with 'no label' allows a user to enter free text for a name
+question: Victim of Crime
+subquestion: |
+  What was the full name of the offender? 
+fields: 
+  - no label: VOC_perpetrator
+---
+question: Victim of Crime
+subquestion: |
+  What was the date of birth (if known) of the offender?
+  
+fields:
+  - no label: VOC_dateofbirth_offender
+    datatype: date
+---
+question: Victim of Crime
+subquestion: |
+  Was the offender charged and convicted of an offence? 
+  
+fields: 
+  - no label: VOC_offence
+    datatype: radio
+    choices:
+      - Yes, the offender was charged and convicted of an offence: VOC_Yes_CC
+      - No, the offender was not charged and convicted of an offence: VOC_No_CC
+---
+# an 'input type' 'area' allows a user to enter free text
+question: Victim of Crime
+subquestion: |
+  Please provide details of the injuries sustained below.
+  
+fields:
+  - no label: VOC_injuries
+    input type: area
+---
+question: Victim of Crime
+subquestion: | 
+  Did you attend hospital?
+fields: 
+  - no label: VOC_hospital
+    datatype: radio
+    choices: 
+      - Yes I attended hospital: VOC_Yes_Hospital
+      - No, I did not attend hospital: VOC_No_Hospital
+---
+question: Victim of Crime
+subquestion: |
+  Do you have a General Practitioner?
+fields: 
+  - no label: VOC_GP
+    datatype: radio
+    choices: 
+      - Yes, I have a General Practitioner: VOC_Yes_GP
+      - No, I do not have a General Practitioner: VOC_No_GP
+---
+question: Victim of Crime
+subquestion: |
+  What is your General Practitoner's name?
+fields: 
+  - no label: VOC_GP_name
+---
+question: Victim of Crime
+subquestion: |
+  Please provide the name of the medical practice.
+fields: 
+  - no label: VOC_Name_MP
+---
+# This code block asks potential clients Motor Vehicle Accident questions
+---
+# A 'date' datatype allows a user to input the date
+question: Motor Vehicle Accident
+subquestion: |
+  What was the date of the offence?
+fields:
+  - no label: MVA_date_of_offence
+    datatype: date
+---
+# a 'fields' with 'no label' allows a user to enter free text for a name
+question: Motor Vehicle Accident
+subquestion: |
+  What was the full name of the other party?
+fields: 
+  - no label: MVA_party
+---
+question: Motor Vehicle Accident
+subquestion: |
+  If you have the other vehicle’s registration number involved in the accident, please provide below.
+fields: 
+  - no label: MVA_registration
+---
+question: Motor Vehicle Accident
+subquestion: |
+  How did the accident occur?
+fields: 
+  - no label: MVA_accident
+    input type: area
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Did you sustain any injuries?
+fields:
+  - no label: MVA_injury
+    datatype: radio
+    choices: 
+      - Yes, I sustained injuries: MVA_Yes_Injury
+      - No, I did not sustain an injury: MVA_No_Injury
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Please provide details of the injury(s) sustained
+fields:
+  - no label: MVA_detail_injury
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Did the other driver sustain any injuries?
+fields:
+  - no label: MVA_injury_other
+    datatype: radio
+    choices: 
+      - Yes, the other driver sustained injuries: MVA_Yes_Injury_other
+      - No, the other driver did not sustain any injuries: MVA_No_Injury_other
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Did you give your details to the other driver?
+fields:
+  - no label: MVA_details_other
+    datatype: radio
+    choices: 
+      - Yes, I gave my details to the other driver: MVA_Yes_details_other
+      - No, I did not give my details to the other driver: MVA_No_details_other
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Did you require medical help?
+fields: 
+  - no label: MVA_medical_help
+    datatype: radio
+    choices: 
+      - Yes, I did require medical help: MVA_Yes_medical_help
+      - No, I did not require medical help: MVA_No_medical_help
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Did you contact the police?
+fields:
+  - no label: MVA_police
+    datatype: radio
+    choices: 
+      - Yes, I contacted the police: MVA_Yes_police
+      - No, I did not contact the police: MVA_No_police
+---
+question: Motor Vehicle Accident
+subquestion: |
+  When did you contact the police?
+fields:
+  - no label: MVA_date_of_police_contact
+    datatype: date
+---
+question: Motor Vehicle Accident
+subquestion: |
+  Have you made an insurance claim?
+fields:
+  - no label: MVA_Insurance_claim
+    datatype: radio
+    choices: 
+      - Yes, I made an insurance claim: MVA_Yes_Insurance_claim
+      - No, I did not made an insurance claim: MVA_No_Insurance_claim
+---
+# This code block asks potential Clients questions regarding the National Redress Scheme
+question: National Redress Scheme 
+subquestion: |
+  Name in the institution (if different to what was submitted earlier)
+fields: 
+  - no label: NRS_Name
+---
+question: National Redress Scheme 
+subquestion: |
+  Placement type
+  
+fields:
+  - Where were you placed when the abuse took place?: NRS_placement_type
+    datatype: checkboxes
+    choices:
+      - Orphanage/Children's Home
+      - Mission
+      - Foster Care
+      - Out of Home Care
+      - Relative or Kinship Care
+      - Youth Detention
+      - Other
+---
+question: National Redress Scheme 
+subquestion: |
+  What was the name of the institution(s) where the sexual abuse took place?
+fields: 
+  - no label: NRS_institution_abuse
+---
+question: National Redress Scheme 
+subquestion: |
+  What was the full name(s) of the perpetrator(s)
+fields: 
+  - no label: NRS_perpetrator
+---
+question: National Redress Scheme 
+subquestion: |
+  What was the approximate date the abuse took place?
+  
+fields:
+  - no label: NRS_date_of_offence
+    datatype: date
+---
+question: National Redress Scheme 
+subquestion: |
+  How old were you when the sexual abuse took place?
+fields:
+  - no label: NRS_age
+    datatype: integer
+---
+question: National Redress Scheme 
+subquestion: |
+  Over what period of time did the sexual abuse take place? Please select from the time periods below.
+fields:
+  - no label: NRS_abuse_period
+    input type: radio
+    choices:
+     - Less than a year
+     - 1 - 5 years
+     - 5 - 10 years
+     - 10 - 15 years
+     - More than 15 years
+---
+question: National Redress Scheme 
+subquestion: |
+  Have you received any prior payment for the sexual abuse you suffered as a child?
+  
+fields:
+  - no label: NRS_prior_payment
+    datatype: radio
+    choices:
+    - Yes, the incident was reported to the police: NRS_prior_payment_received
+    - No, the incident was not reported to the police: NRS_prior_payment_not_received
+---
+question: National Redress Scheme 
+subquestion: |
+  If so, please provide the details of the payment.
+fields:
+  - no label: NRS_Payments
+---
+# This code block asks the potential client questions about their family issues
+question: Family Law
+subquestion: |
+  What is the name of your former partner?
+   
+fields:
+  - no label: FL_partner_name
+---
+question: Family Law
+subquestion: |
+  What is the Date of Birth of your former partner?
+  
+fields:
+  - no label: FL_partner_date
+    datatype: date
+---
+question: Family Law
+subquestion: |
+  Are there children from your relationship?
+  
+fields:
+  - no label: FL_children
+    datatype: radio
+    choices:
+      - Yes, I have children from the relationship: FL_Yes_Children
+      - No, I have children from the relationship: FL_No_Children
+---
+question: Family Law
+subquestion: |
+  What is your child's name?
+fields:
+  - no label: FL_child_name
+---
+question: Family Law
+subquestion: |
+  What is the date of birth of your child?
+  
+fields:
+  - no label: FL_child_date
+    datatype: date
+---
+question: Family Law
+subquestion: |
+  When did your relationship start?
+fields:
+  - no label: FL_date_relationship
+    datatype: date
+---
+question: Family Law
+subquestion: |
+  When was the date of separation?
+fields:
+  - no label: FL_separation_date
+    datatype: date
+---
+# The datatype 'checkboxes' allows the client to choose from a list of potential reasons
+question: Family Law
+subquestion: |
+  What was the reason for separation?
+fields:
+  - no label: FL_separation_reason
+    datatype: checkboxes
+    choices:
+      - Amicable split
+      - Drug use
+      - Alcohol use
+      - Family violence, including domestic violence
+      - Infidelity
+      - Other
+---
+question: Family Law
+subquestion: |
+  Was there an intervention order?
+  
+fields: 
+  - no label: FL_intervention_order
+    datatype: radio
+    choices:
+      - Yes, there was an intervention order: FL_Yes_intervention_order
+      - No, there was not an intervention order: FL_No_intervention_order
+---
+# This code block asks potential clients further questions if they have chosen Other
+question: Other
+subquestion: |
+  What is the issue?
+fields:
+  - no label: FL_other_issue
+    input type: area
+---
+question: Other
+subquestion: |
+  Was there Police/Welfare involvement?
+fields:
+  - no label: FL_involvement_police
+    datatype: radio
+    choices:
+      - Yes, there was Police/Welfare involvement: FL_Yes_involvement_police
+      - No, there was no Police/Welfare involvement: FL_No_involvement_police
+---
+question: Other
+subquestion: |
+  Has this issue been to the Family Court?
+fields: 
+  - no label: Other_FC
+    datatype: radio
+    choices:
+      - Yes, this issue has been to the Family Court: FL_Yes_FC
+      - No, this issue has not been to the Family Court: FL_No_FC
+---
+question: Other
+subquestion: |
+  If so, what year did this issue go to the Family Court?
+  
+fields: 
+  - no label: Other_FC_date
+    datatype: date
+---
+question: Other
+subquestion: |
+  Has this issue been to the Family Dispute Resolution?
+fields:
+  - no label: Other_FDS
+    datatype: radio
+    choices:
+      - Yes, this issue has been to the Family Dispute Resolution: Other_Yes_FDS
+      - No, this issue has not been to the Family Dispute Resolution: Other_No_FDS
+---
+question: Other
+subquestion: |
+  Have you had a previous Lawyer?
+fields:
+  - no label: Other_lawyer
+    datatype: radio
+    choices:
+      - Yes, I have used a previous lawyer: Other_Yes_lawyer
+      - No, I have not used a previous lawyer: Other_No_lawyer
+---
+question: Other
+subquestion: |
+  If yes, what are the details of the lawyer? I.e. their name, job title and law firm, if possible.
+  
+fields:
+  - no label: Other_lawyer_title
+    input type: area
+---
+#EMPLOYMENT QUESTIONS
+question: Employment
+subquestion: |
+  Where do you work?
+fields:
+  - no label: EMPworkplace
+    input type: target_variable
+---
+question: Employment
+subquestion: |
+  What type is your employment?
+fields:
+  - no label: EMPworktype
+    input type: radio
+    choices:
+     - Casual
+     - Part-Time
+     - Full-Time
+     - Unsure
+---
+question: Employment
+subquestion: |
+  What is your job title?
+fields:
+  - no label: EMPjobrole
+    datatype: target_variable
+---
+question: Employment
+subquestion: |
+  What do you do in your job role?
+fields:
+  - no label: EMPjobroleinfo
+    datatype: target_variable
+---
+question: Employment
+subquestion: |
+  Are you a member of your union?
+fields:
+  - no label: EMPunion
+    input type: radio
+    choices:
+     - Yes
+     - No
+     - Unsure
+---
+question: Employment
+subquestion: |
+  If so, what is the name of your union?
+fields:
+  - no label: EMPunionname
+    datatype: target_variable
+---
+question: Employment
+subquestion: |
+  Please explain your workplace issue.
+fields:
+  - no label: EMPworkissue
+    input type: area
+---
+question: Employment
+subquestion: |
+  Is this issue ongoing?
+fields:
+  - no label: EMPongoing
+    input type: radio
+    choices:
+     - Yes
+     - No
+---
+question: Employment
+subquestion: |
+  have you raised this issue with anyone?
+fields:
+  - no label: EMPraised
+    input type: radio
+    choices:
+     - Yes, a lawyer
+     - Yes, a manager
+     - Yes, the union
+     - Yes, human resources (HR)
+     - No
+---
+question: Employment
+subquestion: |
+  If yes, please explain if anything has happened
+fields:
+  - no label: EMPhappened
+    input type: area
+---
+question: Employment
+subquestion: |
+  Is there anything else you would like to mention?
+fields:
+  - no label: EMPextrainfo
+    input type: area
+---
